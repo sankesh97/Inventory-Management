@@ -1,11 +1,14 @@
 import { useContext, useEffect, useState } from 'react';
 import { InventoryContext } from '../Context/InventoryContext';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const ProductListing = () => {
+  const { departmentName } = useParams;
   const { InventoryState, departments, getDepartments } =
     useContext(InventoryContext);
-  const [selectedDepartment, setSelectedDepartment] = useState('All');
+  const [selectedDepartment, setSelectedDepartment] = useState(
+    departmentName ? departmentName : 'All'
+  );
   const [selectLowStock, setSelectLowStock] = useState(false);
   const [selectedSortBy, setSelectedSortBy] = useState('');
 
@@ -13,6 +16,7 @@ const ProductListing = () => {
 
   useEffect(() => {
     getDepartments();
+    console.log(departmentName);
   }, []);
 
   const InventoryTable = InventoryState.filter((product) =>
