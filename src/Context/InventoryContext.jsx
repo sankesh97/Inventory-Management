@@ -1,6 +1,8 @@
 import { createContext, useState } from 'react';
-import InventoryData from '../Data/InventoryData';
+import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
+
+import InventoryData from '../Data/InventoryData';
 
 const InventoryContext = createContext();
 
@@ -42,7 +44,16 @@ const InventoryProvider = ({ children }) => {
 
   //Add Products
   const AddProduct = (productData) => {
-    setInventoryState((prevState) => [...prevState, productData]);
+    setInventoryState((prevState) => [
+      ...prevState,
+      {
+        ...productData,
+        id: uuidv4(),
+        stock: Number(productData.stock),
+        delivered: Number(productData.delivered),
+        price: Number(productData.price),
+      },
+    ]);
     navigate('/products');
   };
 
