@@ -11,17 +11,16 @@ function App() {
     <>
       <div className='container-fluid'>
         <div className='row'>
-          <div className='col-md-3 bg-dark vh-100 p-3'>
+          <div className='col-md-3 bg-dark vh-100 p-3 sticky-top'>
             <Sidebar></Sidebar>
           </div>
           <div className='col-md-9'>
             <Routes>
               <Route path='/' element={<Dashboard />} />
               <Route path='/department' element={<Department />} />
-              <Route path='/products' element={<ProductListing />}>
-                <Route path=':productId' element={<ProductPage />} />
-                <Route path='add-product' element={<AddProduct />} />
-              </Route>
+              <Route path='/products' element={<ProductListing />} />
+              <Route path='/products/:productId' element={<ProductPage />} />
+              <Route path='/products/add-product' element={<AddProduct />} />
             </Routes>
           </div>
         </div>
