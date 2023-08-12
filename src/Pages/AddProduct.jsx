@@ -56,6 +56,7 @@ const AddProduct = () => {
             onChange={formOnChangeHandler}
             className='form-control'
             id='name'
+            required
           />
         </div>
         <div className='mb-2'>
@@ -66,6 +67,7 @@ const AddProduct = () => {
             className='form-control'
             id='description'
             rows='3'
+            required
             onChange={formOnChangeHandler}
           ></textarea>
         </div>
@@ -77,6 +79,7 @@ const AddProduct = () => {
             type='number'
             onChange={formOnChangeHandler}
             className='form-control'
+            required
             id='price'
           />
         </div>
@@ -89,6 +92,7 @@ const AddProduct = () => {
             onChange={formOnChangeHandler}
             className='form-control'
             id='stock'
+            required
           />
         </div>
         <div className='mb-2'>
@@ -100,6 +104,7 @@ const AddProduct = () => {
             onChange={formOnChangeHandler}
             className='form-control'
             id='sku'
+            required
           />
         </div>
         <div className='mb-2'>
@@ -111,6 +116,7 @@ const AddProduct = () => {
             onChange={formOnChangeHandler}
             className='form-control'
             id='supplier'
+            required
           />
         </div>
         <div className='mb-2'>
@@ -122,6 +128,7 @@ const AddProduct = () => {
             onChange={formOnChangeHandler}
             className='form-control'
             id='delivered'
+            required
           />
         </div>
         <div className='mb-2'>
@@ -130,6 +137,7 @@ const AddProduct = () => {
           </label>
           <input
             type='url'
+            required
             onChange={formOnChangeHandler}
             className='form-control'
             id='imageUrl'
