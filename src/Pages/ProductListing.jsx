@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { InventoryContext } from '../Context/InventoryContext';
+import { Link } from 'react-router-dom';
 
 const ProductListing = () => {
   const { InventoryState, departments, getDepartments } =
@@ -30,7 +31,9 @@ const ProductListing = () => {
         <td>
           <img src={product.imageUrl} style={{ maxWidth: '50px' }} />
         </td>
-        <td>{product.name}</td>
+        <td>
+          <Link to={`/products/${product.id}`}>{product.name}</Link>
+        </td>
         <td className='text-wrap'>{product.description}</td>
         <td>${product.price}</td>
         <td>{product.stock}</td>
@@ -100,9 +103,9 @@ const ProductListing = () => {
         </select>
 
         {/* Add Button */}
-        <button type='button' className='btn btn-primary'>
+        <Link to='/products/add-product' className='btn btn-primary'>
           Add Product
-        </button>
+        </Link>
       </div>
 
       {/* Table */}

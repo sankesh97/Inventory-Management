@@ -1,5 +1,6 @@
 import { createContext, useState } from 'react';
 import InventoryData from '../Data/InventoryData';
+import { useNavigate } from 'react-router-dom';
 
 const InventoryContext = createContext();
 
@@ -7,6 +8,7 @@ const InventoryProvider = ({ children }) => {
   const [InventoryState, setInventoryState] = useState(InventoryData);
   const [totalVal, setTotalVal] = useState();
   const [departments, setDepartments] = useState();
+  const navigate = useNavigate();
 
   // Calculate the Dashboard Values
   const getTotalValues = () => {
@@ -26,6 +28,7 @@ const InventoryProvider = ({ children }) => {
     setTotalVal(tempValues);
   };
 
+  //Get Department List
   const getDepartments = () => {
     const TempDepartments = InventoryState.reduce(
       (DepartmentsList, currentProduct) =>
@@ -37,6 +40,12 @@ const InventoryProvider = ({ children }) => {
     setDepartments(TempDepartments);
   };
 
+  //Add Products
+  const AddProduct = (productData) => {
+    setInventoryState((prevState) => [...prevState, productData]);
+    navigate('/products');
+  };
+
   return (
     <InventoryContext.Provider
       value={{
@@ -46,6 +55,7 @@ const InventoryProvider = ({ children }) => {
         setInventoryState,
         getTotalValues,
         getDepartments,
+        AddProduct,
       }}
     >
       {children}
