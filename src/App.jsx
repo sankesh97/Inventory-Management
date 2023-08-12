@@ -18,11 +18,11 @@ function App() {
             <Routes>
               <Route path='/' element={<Dashboard />} />
               <Route path='/department' element={<Department />} />
+              <Route path='/products' element={<ProductListing />} />
               <Route
-                path='/department/:departmentName'
+                path='/department/:deptName'
                 element={<ProductListing />}
               />
-              <Route path='/products' element={<ProductListing />} />
               <Route path='/products/:productId' element={<ProductPage />} />
               <Route path='/products/add-product' element={<AddProduct />} />
             </Routes>

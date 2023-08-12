@@ -3,11 +3,11 @@ import { InventoryContext } from '../Context/InventoryContext';
 import { Link, useParams } from 'react-router-dom';
 
 const ProductListing = () => {
-  const { departmentName } = useParams;
+  const { deptName } = useParams();
   const { InventoryState, departments, getDepartments } =
     useContext(InventoryContext);
   const [selectedDepartment, setSelectedDepartment] = useState(
-    departmentName ? departmentName : 'All'
+    deptName ? deptName : 'All'
   );
   const [selectLowStock, setSelectLowStock] = useState(false);
   const [selectedSortBy, setSelectedSortBy] = useState('');
@@ -16,7 +16,6 @@ const ProductListing = () => {
 
   useEffect(() => {
     getDepartments();
-    console.log(departmentName);
   }, []);
 
   const InventoryTable = InventoryState.filter((product) =>
