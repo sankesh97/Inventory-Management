@@ -4,6 +4,7 @@ import { InventoryContext } from '../Context/InventoryContext';
 const AddProduct = () => {
   const { departments, getDepartments, AddProduct } =
     useContext(InventoryContext);
+  const [selectedDepartment, setSelectedDepartment] = useState();
   const [formInputs, setFormInputs] = useState({});
   useEffect(() => {
     getDepartments();
@@ -35,6 +36,7 @@ const AddProduct = () => {
             id='department'
             required
             className='form-select'
+            value={selectedDepartment}
             onChange={formOnChangeHandler}
           >
             {departments &&
